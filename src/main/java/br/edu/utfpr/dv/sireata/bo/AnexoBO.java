@@ -8,10 +8,12 @@ import br.edu.utfpr.dv.sireata.dao.AnexoDAO;
 import br.edu.utfpr.dv.sireata.model.Anexo;
 
 public class AnexoBO {
+    
+        AnexoDAO dao;
 
 	public Anexo buscarPorId(int id) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
+			dao = new AnexoDAO();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class AnexoBO {
 	
 	public List<Anexo> listarPorAta(int idAta) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
+			dao = new AnexoDAO();
 			
 			return dao.listarPorAta(idAta);
 		}catch(Exception e){
@@ -50,7 +52,7 @@ public class AnexoBO {
 			
 			this.validarDados(anexo);
 			
-			AnexoDAO dao = new AnexoDAO();
+			dao = new AnexoDAO();
 			
 			return dao.salvar(anexo);
 		}catch(Exception e){
@@ -66,7 +68,7 @@ public class AnexoBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
+			dao = new AnexoDAO();
 			
 			dao.excluir(id);
 		}catch(Exception e){

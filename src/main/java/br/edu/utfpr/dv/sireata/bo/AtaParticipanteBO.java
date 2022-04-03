@@ -9,9 +9,11 @@ import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 
 public class AtaParticipanteBO {
 	
+        AtaParticipanteDAO dao;
+    
 	public AtaParticipante buscarPorId(int id) throws Exception{
 		try{
-			AtaParticipanteDAO dao = new AtaParticipanteDAO();
+			dao = new AtaParticipanteDAO();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class AtaParticipanteBO {
 	
 	public List<AtaParticipante> listarPorAta(int idAta) throws Exception{
 		try{
-			AtaParticipanteDAO dao = new AtaParticipanteDAO();
+			dao = new AtaParticipanteDAO();
 			
 			return dao.listarPorAta(idAta);
 		}catch(Exception e){
@@ -53,7 +55,7 @@ public class AtaParticipanteBO {
 			
 			this.validarDados(participante);
 			
-			AtaParticipanteDAO dao = new AtaParticipanteDAO();
+			dao = new AtaParticipanteDAO();
 			
 			return dao.salvar(participante);
 		}catch(Exception e){
@@ -69,7 +71,7 @@ public class AtaParticipanteBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			AtaParticipanteDAO dao = new AtaParticipanteDAO();
+			dao = new AtaParticipanteDAO();
 			
 			dao.excluir(id);
 		}catch(Exception e){

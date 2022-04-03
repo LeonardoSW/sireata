@@ -8,10 +8,12 @@ import br.edu.utfpr.dv.sireata.dao.PautaDAO;
 import br.edu.utfpr.dv.sireata.model.Pauta;
 
 public class PautaBO {
-	
+
+        PautaDAO dao;
+    
 	public Pauta buscarPorId(int id) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
+			dao = new PautaDAO();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class PautaBO {
 	
 	public List<Pauta> listarPorAta(int idAta) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
+			dao = new PautaDAO();
 			
 			return dao.listarPorAta(idAta);
 		}catch(Exception e){
@@ -47,7 +49,7 @@ public class PautaBO {
 			
 			this.validarDados(pauta);
 			
-			PautaDAO dao = new PautaDAO();
+			dao = new PautaDAO();
 			
 			return dao.salvar(pauta);
 		}catch(Exception e){
@@ -63,7 +65,7 @@ public class PautaBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			PautaDAO dao = new PautaDAO();
+			dao = new PautaDAO();
 			
 			dao.excluir(id);
 		}catch(Exception e){

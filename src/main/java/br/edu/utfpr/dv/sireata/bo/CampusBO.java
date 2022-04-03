@@ -8,10 +8,12 @@ import br.edu.utfpr.dv.sireata.dao.CampusDAO;
 import br.edu.utfpr.dv.sireata.model.Campus;
 
 public class CampusBO {
+    
+        CampusDAO dao;
 	
 	public Campus buscarPorId(int id) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			dao = new CampusDAO();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class CampusBO {
 	
 	public Campus buscarPorDepartamento(int idDepartamento) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			dao = new CampusDAO();
 			
 			return dao.buscarPorDepartamento(idDepartamento);
 		}catch(Exception e){
@@ -35,7 +37,7 @@ public class CampusBO {
 	
 	public List<Campus> listarTodos(boolean apenasAtivos) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			dao = new CampusDAO();
 			
 			return dao.listarTodos(apenasAtivos);
 		}catch(Exception e){
@@ -47,7 +49,7 @@ public class CampusBO {
 	
 	public List<Campus> listarParaCriacaoAta(int idUsuario) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			dao = new CampusDAO();
 			
 			return dao.listarParaCriacaoAta(idUsuario);
 		}catch(Exception e){
@@ -59,7 +61,7 @@ public class CampusBO {
 	
 	public List<Campus> listarParaConsultaAtas(int idUsuario) throws Exception{
 		try{
-			CampusDAO dao = new CampusDAO();
+			dao = new CampusDAO();
 			
 			return dao.listarParaConsultaAtas(idUsuario);
 		}catch(Exception e){
@@ -75,7 +77,7 @@ public class CampusBO {
 		}
 		
 		try{
-			CampusDAO dao = new CampusDAO();
+			dao = new CampusDAO();
 			
 			return dao.salvar(campus);
 		}catch(Exception e){

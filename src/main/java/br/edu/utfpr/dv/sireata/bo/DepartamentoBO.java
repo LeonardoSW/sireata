@@ -8,10 +8,12 @@ import br.edu.utfpr.dv.sireata.dao.DepartamentoDAO;
 import br.edu.utfpr.dv.sireata.model.Departamento;
 
 public class DepartamentoBO {
+    
+        DepartamentoDAO dao;
 	
 	public Departamento buscarPorId(int id) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.buscarPorId(id);
 		}catch(Exception e){
@@ -23,7 +25,7 @@ public class DepartamentoBO {
 	
 	public Departamento buscarPorOrgao(int idOrgao) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.buscarPorOrgao(idOrgao);
 		}catch(Exception e){
@@ -35,7 +37,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarTodos(boolean apenasAtivos) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.listarTodos(apenasAtivos);
 		}catch(Exception e){
@@ -47,7 +49,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarPorCampus(int idCampus, boolean apenasAtivos) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.listarPorCampus(idCampus, apenasAtivos);
 		}catch(Exception e){
@@ -59,7 +61,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarParaCriacaoAta(int idCampus, int idUsuario) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.listarParaCriacaoAta(idCampus, idUsuario);
 		}catch(Exception e){
@@ -71,7 +73,7 @@ public class DepartamentoBO {
 	
 	public List<Departamento> listarParaConsultaAtas(int idCampus, int idUsuario) throws Exception{
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.listarParaConsultaAtas(idCampus, idUsuario);
 		}catch(Exception e){
@@ -90,7 +92,7 @@ public class DepartamentoBO {
 		}
 		
 		try{
-			DepartamentoDAO dao = new DepartamentoDAO();
+			dao = new DepartamentoDAO();
 			
 			return dao.salvar(departamento);
 		}catch(Exception e){
