@@ -15,6 +15,7 @@ import br.edu.utfpr.dv.sireata.window.EditarDepartamentoWindow;
 
 public class DepartamentoView extends ListView {
 
+        DepartamentoBO bo;
 	public static final String NAME = "departamentos";
 	
 	private final ComboCampus cbCampus;
@@ -35,7 +36,7 @@ public class DepartamentoView extends ListView {
 		this.getGrid().getColumns().get(1).setWidth(100);
 		
 		try{
-			DepartamentoBO bo = new DepartamentoBO();
+			bo = new DepartamentoBO();
 			List<Departamento> list = bo.listarPorCampus((this.cbCampus.getCampus() == null ? 0 : this.cbCampus.getCampus().getIdCampus()), false);
 			
 			for(Departamento d : list){
@@ -61,7 +62,7 @@ public class DepartamentoView extends ListView {
 	@Override
 	public void editar(Object id) {
 		try{
-			DepartamentoBO bo = new DepartamentoBO();
+			bo = new DepartamentoBO();
 			Departamento departamento = bo.buscarPorId((int)id);
 			
 			UI.getCurrent().addWindow(new EditarDepartamentoWindow(departamento, this));

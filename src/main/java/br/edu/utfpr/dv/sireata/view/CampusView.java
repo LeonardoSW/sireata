@@ -13,6 +13,8 @@ import br.edu.utfpr.dv.sireata.window.EditarCampusWindow;
 
 public class CampusView extends ListView {
 	
+    
+        CampusBO bo;
 	public static final String NAME = "campus";
 	
 	public CampusView(){
@@ -28,7 +30,7 @@ public class CampusView extends ListView {
 		this.getGrid().getColumns().get(1).setWidth(100);
 		
 		try{
-			CampusBO bo = new CampusBO();
+			bo = new CampusBO();
 			List<Campus> list = bo.listarTodos(false);
 			
 			for(Campus c : list){
@@ -50,7 +52,7 @@ public class CampusView extends ListView {
 	@Override
 	public void editar(Object id) {
 		try{
-			CampusBO bo = new CampusBO();
+			bo = new CampusBO();
 			Campus campus = bo.buscarPorId((int)id);
 			
 			UI.getCurrent().addWindow(new EditarCampusWindow(campus, this));
