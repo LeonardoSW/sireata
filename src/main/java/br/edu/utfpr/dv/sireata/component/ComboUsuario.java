@@ -12,6 +12,7 @@ import br.edu.utfpr.dv.sireata.model.Usuario;
 public class ComboUsuario extends ComboBox {
 	
 private List<Usuario> list;
+UsuarioBO bo;
 	
 	public ComboUsuario(String caption){
 		super(caption);
@@ -47,7 +48,7 @@ private List<Usuario> list;
 		
 		if(!find){
 			try {
-				UsuarioBO bo = new UsuarioBO();
+				bo = new UsuarioBO();
 				Usuario user = bo.buscarPorId(c.getIdUsuario());
 				
 				this.addItem(user);
@@ -60,7 +61,7 @@ private List<Usuario> list;
 	
 	private void carregaCombo(){
 		try {
-			UsuarioBO bo = new UsuarioBO();
+			bo = new UsuarioBO();
 			this.list = bo.listarTodos(true);
 			
 			this.removeAllItems();

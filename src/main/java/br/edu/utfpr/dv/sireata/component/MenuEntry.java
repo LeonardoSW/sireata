@@ -11,8 +11,11 @@ import com.vaadin.ui.Window;
 
 public class MenuEntry extends HorizontalLayout {
 	
+        Link linkLabel;
+        Label label;
+    
 	public MenuEntry(String caption, int level, String navigateTo){
-		Link label = new Link(caption, null);
+		linkLabel = new Link(caption, null);
 		
 		this.addLayoutClickListener(new LayoutClickListener() {            
 			@Override
@@ -21,17 +24,17 @@ public class MenuEntry extends HorizontalLayout {
 	            }
 		});
 		
-		this.addLabel(label, level);
+		this.addLabel(linkLabel, level);
 	}
 	
 	public MenuEntry(String caption, int level){
-		Label label = new Label(caption);
+		label = new Label(caption);
 		
 		this.addLabel(label, level);
 	}
 	
 	public MenuEntry(String caption, int level, Window window){
-		Link label = new Link(caption, null);
+		linkLabel = new Link(caption, null);
 		
 		this.addLayoutClickListener(new LayoutClickListener() {            
 			@Override
@@ -40,11 +43,11 @@ public class MenuEntry extends HorizontalLayout {
 	            }
 		});
 		
-		this.addLabel(label, level);
+		this.addLabel(linkLabel, level);
 	}
 	
 	public MenuEntry(String caption, int level, MenuEntryClickListener clickListener){
-		Link label = new Link(caption, null);
+		linkLabel = new Link(caption, null);
 		
 		this.addLayoutClickListener(new LayoutClickListener() {            
 			@Override
@@ -53,11 +56,11 @@ public class MenuEntry extends HorizontalLayout {
 	            }
 		});
 		
-		this.addLabel(label, level);
+		this.addLabel(linkLabel, level);
 	}
 	
 	private Label getIdent(int level){
-		Label label = new Label("");
+		label = new Label("");
 		
 		label.setWidth(String.valueOf(level * 10) + "px");
 		

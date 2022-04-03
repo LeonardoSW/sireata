@@ -32,14 +32,27 @@ public class AnexoDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
+
+        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
+        
+        private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
 	
 	public List<Anexo> listarPorAta(int idAta) throws SQLException{
 		Connection conn = null;
@@ -61,12 +74,7 @@ public class AnexoDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -106,12 +114,7 @@ public class AnexoDAO {
 			
 			return anexo.getIdAnexo();
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
