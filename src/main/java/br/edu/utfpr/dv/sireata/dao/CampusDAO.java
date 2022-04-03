@@ -32,12 +32,7 @@ public class CampusDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -60,14 +55,27 @@ public class CampusDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
+
+            private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
+                if((rs != null) && !rs.isClosed())
+                    rs.close();
+                if((stmt != null) && !stmt.isClosed())
+                    stmt.close();
+                if((conn != null) && !conn.isClosed())
+                    conn.close();
+            }
+            
+            private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
+                if((rs != null) && !rs.isClosed())
+                    rs.close();
+                if((stmt != null) && !stmt.isClosed())
+                    stmt.close();
+                if((conn != null) && !conn.isClosed())
+                    conn.close();
+            }
 	
 	public List<Campus> listarTodos(boolean apenasAtivos) throws SQLException{
 		Connection conn = null;
@@ -88,12 +96,7 @@ public class CampusDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -120,12 +123,7 @@ public class CampusDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -154,12 +152,7 @@ public class CampusDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -204,12 +197,7 @@ public class CampusDAO {
 			
 			return campus.getIdCampus();
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	

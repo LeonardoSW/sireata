@@ -31,14 +31,27 @@ public class UsuarioDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
+
+        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
+        
+        private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
 	
 	public Usuario buscarPorId(int id) throws SQLException{
 		Connection conn = null;
@@ -59,12 +72,7 @@ public class UsuarioDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -87,12 +95,7 @@ public class UsuarioDAO {
 				return "";
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -114,12 +117,7 @@ public class UsuarioDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -150,12 +148,7 @@ public class UsuarioDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -198,12 +191,7 @@ public class UsuarioDAO {
 			
 			return usuario.getIdUsuario();
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -250,12 +238,7 @@ public class UsuarioDAO {
 				
 				return (String[])emails.toArray();
 			}finally{
-				if((rs != null) && !rs.isClosed())
-					rs.close();
-				if((stmt != null) && !stmt.isClosed())
-					stmt.close();
-				if((conn != null) && !conn.isClosed())
-					conn.close();
+                            validateFinally(rs, stmt, conn);
 			}
 		}else
 			return null;
@@ -279,12 +262,7 @@ public class UsuarioDAO {
 				return false;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 

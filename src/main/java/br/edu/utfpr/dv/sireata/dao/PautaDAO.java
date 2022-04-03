@@ -31,14 +31,27 @@ public class PautaDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
+
+        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
+        
+             private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
 	
 	public List<Pauta> listarPorAta(int idAta) throws SQLException{
 		Connection conn = null;
@@ -59,12 +72,7 @@ public class PautaDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -104,12 +112,7 @@ public class PautaDAO {
 			
 			return pauta.getIdPauta();
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	

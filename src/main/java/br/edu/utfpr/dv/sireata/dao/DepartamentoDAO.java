@@ -35,14 +35,27 @@ public class DepartamentoDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
+
+        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
+        
+        private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
+            if((rs != null) && !rs.isClosed())
+                rs.close();
+            if((stmt != null) && !stmt.isClosed())
+                stmt.close();
+            if((conn != null) && !conn.isClosed())
+                conn.close();
+        }
 	
 	public Departamento buscarPorOrgao(int idOrgao) throws SQLException{
 		Connection conn = null;
@@ -67,12 +80,7 @@ public class DepartamentoDAO {
 				return null;
 			}
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -97,12 +105,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -127,12 +130,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -159,12 +157,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -193,12 +186,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -244,12 +232,7 @@ public class DepartamentoDAO {
 			
 			return departamento.getIdDepartamento();
 		}finally{
-			if((rs != null) && !rs.isClosed())
-				rs.close();
-			if((stmt != null) && !stmt.isClosed())
-				stmt.close();
-			if((conn != null) && !conn.isClosed())
-				conn.close();
+                    validateFinally(rs, stmt, conn);
 		}
 	}
 	
