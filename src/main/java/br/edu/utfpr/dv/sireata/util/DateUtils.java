@@ -6,6 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtils {
+    
+        public static Calendar cacheToday;
+        
+        public DateUtils(){
+            cacheToday = getToday();
+        }
 
 	public static Calendar getToday(){
 		Calendar today = Calendar.getInstance();
@@ -14,6 +20,8 @@ public class DateUtils {
 		today.set(Calendar.SECOND, 0);
 		today.set(Calendar.MILLISECOND, 0);
 		
+                cacheToday = today;
+                
 		return today;
 	}
 	
@@ -25,9 +33,8 @@ public class DateUtils {
 	}
 	
 	public static int getSemester(){
-		Calendar today = DateUtils.getToday();
 		
-		if(today.get(Calendar.MONTH) >= 6){
+		if(cacheToday.get(Calendar.MONTH) >= 6){
 			return 2;
 		}else{
 			return 1;
@@ -46,9 +53,7 @@ public class DateUtils {
 	}
 	
 	public static int getYear(){
-		Calendar today = DateUtils.getToday();
-		
-		return today.get(Calendar.YEAR);
+		return cacheToday.get(Calendar.YEAR);
 	}
 	
 	public static int getDayOfMonth(Date date){
