@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Departamento;
+import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
 public class DepartamentoDAO {
 
+        DaoUtils daoUtils = new DaoUtils();
+    
 	public Departamento buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -35,28 +38,10 @@ public class DepartamentoDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 
-        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
-            if((rs != null) && !rs.isClosed())
-                rs.close();
-            if((stmt != null) && !stmt.isClosed())
-                stmt.close();
-            if((conn != null) && !conn.isClosed())
-                conn.close();
-        }
-        
-        private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
-            if((rs != null) && !rs.isClosed())
-                rs.close();
-            if((stmt != null) && !stmt.isClosed())
-                stmt.close();
-            if((conn != null) && !conn.isClosed())
-                conn.close();
-        }
-	
 	public Departamento buscarPorOrgao(int idOrgao) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -80,7 +65,7 @@ public class DepartamentoDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -105,7 +90,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -130,7 +115,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -157,7 +142,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -186,7 +171,7 @@ public class DepartamentoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -232,7 +217,7 @@ public class DepartamentoDAO {
 			
 			return departamento.getIdDepartamento();
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	

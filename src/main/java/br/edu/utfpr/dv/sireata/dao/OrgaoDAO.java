@@ -11,9 +11,12 @@ import java.util.List;
 import br.edu.utfpr.dv.sireata.model.Orgao;
 import br.edu.utfpr.dv.sireata.model.OrgaoMembro;
 import br.edu.utfpr.dv.sireata.model.Usuario;
+import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
 public class OrgaoDAO {
 	
+        DaoUtils daoUtils = new DaoUtils();
+        
 	public Orgao buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -38,28 +41,10 @@ public class OrgaoDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 
-        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
-            if((rs != null) && !rs.isClosed())
-                rs.close();
-            if((stmt != null) && !stmt.isClosed())
-                stmt.close();
-            if((conn != null) && !conn.isClosed())
-                conn.close();
-        }
-        
-        private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
-            if((rs != null) && !rs.isClosed())
-                rs.close();
-            if((stmt != null) && !stmt.isClosed())
-                stmt.close();
-            if((conn != null) && !conn.isClosed())
-                conn.close();
-        }
-	
 	public List<Orgao> listarTodos(boolean apenasAtivos) throws SQLException{
 		Connection conn = null;
 		Statement stmt = null;
@@ -83,7 +68,7 @@ public class OrgaoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -113,7 +98,7 @@ public class OrgaoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -143,7 +128,7 @@ public class OrgaoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -171,7 +156,7 @@ public class OrgaoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -201,7 +186,7 @@ public class OrgaoDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -227,7 +212,7 @@ public class OrgaoDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -253,7 +238,7 @@ public class OrgaoDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -274,7 +259,7 @@ public class OrgaoDAO {
 			
 			return rs.next();
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	

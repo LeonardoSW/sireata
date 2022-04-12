@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Campus;
+import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
 public class CampusDAO {
-	
+
+        DaoUtils daoUtils = new DaoUtils();
+    
 	public Campus buscarPorId(int id) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -32,7 +35,7 @@ public class CampusDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -55,27 +58,9 @@ public class CampusDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
-
-            private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
-                if((rs != null) && !rs.isClosed())
-                    rs.close();
-                if((stmt != null) && !stmt.isClosed())
-                    stmt.close();
-                if((conn != null) && !conn.isClosed())
-                    conn.close();
-            }
-            
-            private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
-                if((rs != null) && !rs.isClosed())
-                    rs.close();
-                if((stmt != null) && !stmt.isClosed())
-                    stmt.close();
-                if((conn != null) && !conn.isClosed())
-                    conn.close();
-            }
 	
 	public List<Campus> listarTodos(boolean apenasAtivos) throws SQLException{
 		Connection conn = null;
@@ -96,7 +81,7 @@ public class CampusDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -123,7 +108,7 @@ public class CampusDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -152,7 +137,7 @@ public class CampusDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -197,7 +182,7 @@ public class CampusDAO {
 			
 			return campus.getIdCampus();
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	

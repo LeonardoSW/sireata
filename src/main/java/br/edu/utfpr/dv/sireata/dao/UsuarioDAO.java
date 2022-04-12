@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.utfpr.dv.sireata.model.Usuario;
+import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
 public class UsuarioDAO {
 	
+        DaoUtils daoUtils = new DaoUtils();
+    
 	public Usuario buscarPorLogin(String login) throws SQLException{
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -31,27 +34,9 @@ public class UsuarioDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
-
-        private void validateFinally(ResultSet rs, PreparedStatement stmt, Connection conn) throws SQLException {
-            if((rs != null) && !rs.isClosed())
-                rs.close();
-            if((stmt != null) && !stmt.isClosed())
-                stmt.close();
-            if((conn != null) && !conn.isClosed())
-                conn.close();
-        }
-        
-        private void validateFinally(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
-            if((rs != null) && !rs.isClosed())
-                rs.close();
-            if((stmt != null) && !stmt.isClosed())
-                stmt.close();
-            if((conn != null) && !conn.isClosed())
-                conn.close();
-        }
 	
 	public Usuario buscarPorId(int id) throws SQLException{
 		Connection conn = null;
@@ -72,7 +57,7 @@ public class UsuarioDAO {
 				return null;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -95,7 +80,7 @@ public class UsuarioDAO {
 				return "";
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -117,7 +102,7 @@ public class UsuarioDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -148,7 +133,7 @@ public class UsuarioDAO {
 			
 			return list;
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -191,7 +176,7 @@ public class UsuarioDAO {
 			
 			return usuario.getIdUsuario();
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 	
@@ -238,7 +223,7 @@ public class UsuarioDAO {
 				
 				return (String[])emails.toArray();
 			}finally{
-                            validateFinally(rs, stmt, conn);
+                            daoUtils.validateFinally(rs, stmt, conn);
 			}
 		}else
 			return null;
@@ -262,7 +247,7 @@ public class UsuarioDAO {
 				return false;
 			}
 		}finally{
-                    validateFinally(rs, stmt, conn);
+                    daoUtils.validateFinally(rs, stmt, conn);
 		}
 	}
 
