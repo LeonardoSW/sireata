@@ -1,5 +1,7 @@
 package br.edu.utfpr.dv.sireata.bo;
 
+import br.com.caelum.stella.inwords.InteiroSemFormato;
+import br.com.caelum.stella.inwords.NumericToWordsConverter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
@@ -22,7 +24,6 @@ import br.edu.utfpr.dv.sireata.model.Ata;
 import br.edu.utfpr.dv.sireata.model.Pauta;
 import br.edu.utfpr.dv.sireata.util.DateUtils;
 import br.edu.utfpr.dv.sireata.util.ReportUtils;
-import br.edu.utfpr.dv.sireata.util.StringUtils;
 import br.edu.utfpr.dv.sireata.model.Ata.TipoAta;
 import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 import br.edu.utfpr.dv.sireata.model.AtaReport;
@@ -356,7 +357,7 @@ public class AtaBO {
 			report.setSecretario(ata.getSecretario().getNome());
 			
 			texto = this.getDataExtenso(ata.getData()) + ", no " + StringEscapeUtils.escapeHtml4(ata.getLocalCompleto()) + 
-					" realizou-se a " + StringUtils.getExtensoOrdinal(ata.getNumero(), true) +
+					" realizou-se a " + getExtensoOrdinal(ata.getNumero(), true) +
 					" reunião " + (ata.getTipo() == TipoAta.ORDINARIA ? "ordinária" : "extraordinária") +
 					" de " + String.valueOf(DateUtils.getYear(ata.getData())) + " do(a) " +
 					StringEscapeUtils.escapeHtml4(orgao.getNomeCompleto()) + ", a qual foi conduzida pelo(a) " + 
@@ -508,14 +509,41 @@ public class AtaBO {
 		}
 		
 		//Data
-		resultado += (dia == 1 ? "primeiro" : StringUtils.getExtenso(dia)) + " dia" + (dia > 1 ? "s" : "") + " do mês de " + meses[mes] + " de " + StringUtils.getExtenso(ano) + ", ";
+		resultado += (dia == 1 ? "primeiro" : getExtenso(dia)) + " dia" + (dia > 1 ? "s" : "") + " do mês de " + meses[mes] + " de " + getExtenso(ano) + ", ";
 		//Hora
-		resultado += "à" + (hora > 1 ? "s" : "") + " " + StringUtils.getExtenso(hora) + " hora" + (hora > 1 ? "s" : "");
+		resultado += "à" + (hora > 1 ? "s" : "") + " " + getExtenso(hora) + " hora" + (hora > 1 ? "s" : "");
 		if(minuto > 0){
-			resultado += " e " + StringUtils.getExtenso(minuto) + " minuto" + (minuto > 1 ? "s" : ""); 
+			resultado += " e " + getExtenso(minuto) + " minuto" + (minuto > 1 ? "s" : ""); 
 		}
 		
 		return resultado;
+	}
+        
+        private String getExtensoOrdinal(int numero, boolean feminino){
+		String[] unidades = {"primeir", "segund", "terceir", "quart", "quint", "sext", "s�tim", "oitav", "non"};
+		String[] dezenas = {"d�cim", "vig�sim", "trig�sim", "quadrag�sim", "quinquag�sim", "sextag�sim", "septuag�sim", "octag�sim", "nonag�sim"};
+		int unidade = (numero % 10), dezena = (numero / 10);
+		String retorno = "";
+		
+		if(numero >= 100){
+			return "N�mero muito grande";
+		}
+		
+		if(dezena > 0){
+			retorno = dezenas[dezena - 1] + (feminino ? "a " : "o ");
+		}
+		
+		if(unidade > 0){
+			retorno += unidades[unidade - 1] + (feminino ? "a " : "o ");
+		}
+		
+		return retorno.trim();
+ 	}
+        
+        private String getExtenso(int numero){
+		NumericToWordsConverter converter;  
+		converter = new NumericToWordsConverter(new InteiroSemFormato());
+		return converter.toWords(numero);  
 	}
 
 }

@@ -13,7 +13,8 @@ import br.edu.utfpr.dv.sireata.dao.UsuarioDAO;
 import br.edu.utfpr.dv.sireata.ldap.LdapConfig;
 import br.edu.utfpr.dv.sireata.ldap.LdapUtils;
 import br.edu.utfpr.dv.sireata.model.Usuario;
-import br.edu.utfpr.dv.sireata.util.StringUtils;
+import org.bouncycastle.jcajce.provider.digest.SHA3;
+import org.bouncycastle.util.encoders.Hex;
 
 public class UsuarioBO {
     
@@ -250,6 +251,13 @@ public class UsuarioBO {
 			
 			throw new Exception(e.getMessage());
 		}
+	}
+        
+        private String generateSHA3Hash(String s){
+            SHA3.DigestSHA3 digestSHA3 = new SHA3.DigestSHA3(512);
+	    byte[] digest = digestSHA3.digest(s.getBytes());
+
+	    return Hex.toHexString(digest);
 	}
 	
 }
