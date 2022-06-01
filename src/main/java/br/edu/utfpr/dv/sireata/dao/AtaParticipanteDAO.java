@@ -8,10 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.utfpr.dv.sireata.Interfaces.IAtaParticipante;
 import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
-public class AtaParticipanteDAO {
+public class AtaParticipanteDAO implements IAtaParticipante {
 	
             DaoUtils daoUtils = new DaoUtils();
     
