@@ -9,10 +9,11 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.utfpr.dv.sireata.Interfaces.ICampus;
 import br.edu.utfpr.dv.sireata.model.Campus;
 import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
-public class CampusDAO {
+public class CampusDAO implements ICampus {
 
         DaoUtils daoUtils = new DaoUtils();
     
