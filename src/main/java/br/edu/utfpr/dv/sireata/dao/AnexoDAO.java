@@ -8,10 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.utfpr.dv.sireata.Interfaces.IAnexo;
 import br.edu.utfpr.dv.sireata.model.Anexo;
 import br.edu.utfpr.dv.sireata.util.DaoUtils;
 
-public class AnexoDAO {
+public class AnexoDAO implements IAnexo {
     
     DaoUtils daoUtils = new DaoUtils();
 	
