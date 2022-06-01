@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.edu.utfpr.dv.sireata.Extensions.EAtaParticipante;
 import br.edu.utfpr.dv.sireata.Interfaces.IAtaParticipante;
 import br.edu.utfpr.dv.sireata.dao.AtaParticipanteDAO;
 import br.edu.utfpr.dv.sireata.model.AtaParticipante;
 
-public class AtaParticipanteBO implements IAtaParticipante {
+public class AtaParticipanteBO extends EAtaParticipante implements IAtaParticipante {
 	
-        AtaParticipanteDAO dao;
     
 	public AtaParticipante buscarPorId(int id) throws Exception{
 		try{

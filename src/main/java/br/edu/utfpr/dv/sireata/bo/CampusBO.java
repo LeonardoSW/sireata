@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.edu.utfpr.dv.sireata.Extensions.ECampus;
 import br.edu.utfpr.dv.sireata.Interfaces.ICampus;
 import br.edu.utfpr.dv.sireata.dao.CampusDAO;
 import br.edu.utfpr.dv.sireata.model.Campus;
 
-public class CampusBO implements ICampus  {
-    
-        CampusDAO dao;
+public class CampusBO extends ECampus implements ICampus  {
+	
 	
 	public Campus buscarPorId(int id) throws Exception{
 		try{
